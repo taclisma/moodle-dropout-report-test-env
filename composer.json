@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twbs/bootstrap": "^5.3",
+        "mustache/mustache": "^2"
+    }
+}

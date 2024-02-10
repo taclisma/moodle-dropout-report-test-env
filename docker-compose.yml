@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  php-app:
+    image: php:7.4-cli
+    container_name: php-composer-container
+    working_dir: /app
+    volumes:
+      - .:/app/
+    ports:
+      - "8080:80"  # Expose container port 80 and map it to host port 8080
+    command: >
+      bash -c "
+        apt-get update && apt-get install -y zip unzip &&
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &&
+        composer install &&
+        php -S 0.0.0.0:80 entry.php"
